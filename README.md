@@ -1,3 +1,5 @@
+version 0.1.0
+
 A SATySFi package of dummy text.
 
 

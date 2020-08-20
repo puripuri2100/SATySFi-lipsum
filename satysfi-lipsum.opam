@@ -1,0 +1,25 @@
+opam-version: "2.0"
+name: "satysfi-lipsum"
+version: "0.1.0"
+synopsis: "A SATySFi package of dummy text"
+description: """A SATySFi package of dummy text."""
+
+maintainer: "puripuri2100 <puripuri2100@gmail.com>"
+authors: "puripuri2100 <puripuri2100@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/puripuri2100/SATySFi-lipsum"
+bug-reports: "https://github.com/puripuri2100/SATySFi-lipsum/issues"
+dev-repo: "git+https://github.com/puripuri2100/SATySFi-lipsum.git"
+
+depends: [
+  "satysfi" {>= "0.0.3" & < "0.0.6"}
+  "satyrographos" {>= "0.0.2" & < "0.0.3"}
+  "satysfi-dist"
+]
+build: [ ]
+install: [
+  ["satyrographos" "opam" "install"
+    "-name" "lipsum"
+    "-prefix" "%{prefix}%"
+    "-script" "%{build}%/Satyristes"]
+]

@@ -1,4 +1,4 @@
-version 0.1.0
+version 0.2.0
 
 A SATySFi package of dummy text.
 
@@ -23,11 +23,20 @@ After installation, you can import this package by writing the code in preamble.
 
 Block Command can not use on text-mode.
 
-"iroha", "jugemu" and "jugemuP" don't take a argument.
+"quick-brown-fox", "iroha", "jugemu" and "jugemuP" don't take a argument.
 
 "lipsum", "wagahai" and "preamble" take a argument of paragraph number.
 `+lipsum`, `+wagahai` and `+preamble` take an optional argument of paragraph range.
 
+
+## quick-brown-fox
+
+  The quick brown fox jumps over the lazy dog.
+
+  - `val quick-brown-fox-string : string`
+  - `val quick-brown-fox-text : inline-text`
+  - `direct \quick-brown-fox : [] inline-cmd`
+  - `direct +quick-brown-fox : [] block-cmd`
 
 ## Lorem ipsum
 

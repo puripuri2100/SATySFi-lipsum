@@ -1,4 +1,4 @@
-%% version 0.1.0
+%% version 0.2.0
 %% (C) 2020 Naoki Kaneko a.k.a. "puripuri2100"
 %% Repository: https://github.com/puripuri2100/SATySFi-lipsum
 %% Issue: https://github.com/puripuri2100/SATySFi-lipsum/issues
@@ -8,11 +8,15 @@
 
 module LipsumText :sig
 
+  val quick-brown-fox-text : string
+
   val lipsum-text-list : string list
   val get-lipsum-text : int -> string
   val get-lipsum-text-list : int -> int -> string list
 
 end = struct
+
+let quick-brown-fox-text = `The quick brown fox jumps over the lazy dog.`
 
 let lipsumtext-1-para =
   `Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices.  Phasellus eu tellus sit amet tortor gravida placerat. Integer sapien est, iaculis in, pretium quis, viverra ac, nunc. Praesent eget sem vel leo ultrices bibendum. Aenean faucibus. Morbi dolor nulla, malesuada eu, pulvinar at, mollis ac, nulla. Curabitur auctor semper nulla. Donec varius orci eget risus. Duis nibh mi, congue eu, accumsan eleifend, sagittis quis, diam. Duis eget orci sit amet orci dignissim rutrum.`

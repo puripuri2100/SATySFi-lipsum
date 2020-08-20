@@ -1,4 +1,4 @@
-%% version 0.1.0
+%% version 0.2.0
 %% (C) 2020 Naoki Kaneko a.k.a. "puripuri2100"
 %% Repository: https://github.com/puripuri2100/SATySFi-lipsum
 %% Issue: https://github.com/puripuri2100/SATySFi-lipsum/issues
@@ -8,6 +8,10 @@
 @import: lipsumjatext
 
 module Lipsum :sig
+
+  val quick-brown-fox-string : string
+  val quick-brown-fox-text : inline-text
+  direct \quick-brown-fox : [] inline-cmd
 
   val lipsum-string : int -> string
   val lipsum-text : int -> inline-text
@@ -34,6 +38,14 @@ module Lipsum :sig
   direct \preamble : [int] inline-cmd
 
 end = struct
+
+  let quick-brown-fox-string =
+    LipsumText.quick-brown-fox-text
+
+  let quick-brown-fox-text =
+    embed-string quick-brown-fox-string
+
+  let-inline \quick-brown-fox = quick-brown-fox-text
 
   let lipsum-string n =
     LipsumText.get-lipsum-text n

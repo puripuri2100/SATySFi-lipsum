@@ -1,0 +1,95 @@
+@import: lipsumtext
+@import: lipsumjatext
+
+module Lipsum :sig
+
+  val lipsum-string : int -> string
+  val lipsum-text : int -> inline-text
+  direct \lipsum : [int] inline-cmd
+
+  val iroha-string : string
+  val iroha-text : inline-text
+  direct \iroha : [] inline-cmd
+
+  val jugemu-string : string
+  val jugemu-text : inline-text
+  direct \jugemu : [] inline-cmd
+
+  val jugemuP-string : string
+  val jugemuP-text : inline-text
+  direct \jugemuP : [] inline-cmd
+
+  val wagahai-string : int -> string
+  val wagahai-text : int -> inline-text
+  direct \wagahai : [int] inline-cmd
+
+  val preamble-string : int -> string
+  val preamble-text : int -> inline-text
+  direct \preamble : [int] inline-cmd
+
+end = struct
+
+  let lipsum-string n =
+    LipsumText.get-lipsum-text n
+
+  let lipsum-text n =
+    let s = lipsum-string n in
+    embed-string s
+
+  let-inline \lipsum n = lipsum-text n
+
+
+
+  let iroha-string =
+    LipsumJaText.iroha-text
+
+  let iroha-text =
+    embed-string iroha-string
+
+  let-inline \iroha = iroha-text
+
+
+
+  let jugemu-string =
+    LipsumJaText.jugemu-text
+
+  let jugemu-text =
+    embed-string jugemu-string
+
+  let-inline \jugemu = jugemu-text
+
+
+
+  let jugemuP-string =
+    LipsumJaText.jugemuP-text
+
+  let jugemuP-text =
+    embed-string jugemuP-string
+
+  let-inline \jugemuP = jugemuP-text
+
+
+
+  let wagahai-string n =
+    LipsumJaText.get-text LipsumJaText.wagahai-text-list n
+
+  let wagahai-text n =
+    let s = wagahai-string n in
+    embed-string s
+
+  let-inline \wagahai n = wagahai-text n
+
+
+
+  let preamble-string n =
+    LipsumJaText.get-text LipsumJaText.preamble-text-list n
+
+  let preamble-text n =
+    let s = preamble-string n in
+    embed-string s
+
+  let-inline \preamble n = preamble-text n
+
+
+
+end

@@ -1,0 +1,168 @@
+@import: lipsumtext
+@import: lipsumjatext
+
+@import: lipsumtext
+@import: lipsumjatext
+
+module Lipsum :sig
+
+  val lipsum-string : int -> string
+  val lipsum-text : int -> inline-text
+  direct \lipsum : [int] inline-cmd
+  direct +lipsum : [int?; int] block-cmd
+
+  val iroha-string : string
+  val iroha-text : inline-text
+  direct \iroha : [] inline-cmd
+  direct +iroha : [] block-cmd
+
+  val jugemu-string : string
+  val jugemu-text : inline-text
+  direct \jugemu : [] inline-cmd
+  direct +jugemu : [] block-cmd
+
+  val jugemuP-string : string
+  val jugemuP-text : inline-text
+  direct \jugemuP : [] inline-cmd
+  direct +jugemuP : [] block-cmd
+
+  val wagahai-string : int -> string
+  val wagahai-text : int -> inline-text
+  direct \wagahai : [int] inline-cmd
+  direct +wagahai : [int?; int] block-cmd
+
+  val preamble-string : int -> string
+  val preamble-text : int -> inline-text
+  direct \preamble : [int] inline-cmd
+  direct +preamble : [int?; int] block-cmd
+
+end = struct
+
+  let lipsum-string n =
+    LipsumText.get-lipsum-text n
+
+  let lipsum-text n =
+    let s = lipsum-string n in
+    embed-string s
+
+  let-inline \lipsum n = lipsum-text n
+
+  let-block ctx +lipsum ?:n-opt m =
+    let n =
+      match n-opt with
+      | None -> m
+      | Some(n) -> n
+    in
+    let str-lst = LipsumText.get-lipsum-text-list n m in
+    str-lst
+    |> List.map
+      (fun s ->
+        s
+        |> embed-string
+        |> read-inline ctx
+        |> line-break true true ctx
+      )
+    |> List.fold-left (+++) block-nil
+
+
+
+  let iroha-string =
+    LipsumJaText.iroha-text
+
+  let iroha-text =
+    embed-string iroha-string
+
+  let-inline \iroha = iroha-text
+
+  let-block ctx +iroha =
+    iroha-text
+    |> read-inline ctx
+    |> line-break true true ctx
+
+
+
+  let jugemu-string =
+    LipsumJaText.jugemu-text
+
+  let jugemu-text =
+    embed-string jugemu-string
+
+  let-inline \jugemu = jugemu-text
+
+  let-block ctx +jugemu =
+    jugemu-text
+    |> read-inline ctx
+    |> line-break true true ctx
+
+
+
+  let jugemuP-string =
+    LipsumJaText.jugemuP-text
+
+  let jugemuP-text =
+    embed-string jugemuP-string
+
+  let-inline \jugemuP = jugemuP-text
+
+  let-block ctx +jugemuP =
+    jugemuP-text
+    |> read-inline ctx
+    |> line-break true true ctx
+
+
+
+  let wagahai-string n =
+    LipsumJaText.get-text LipsumJaText.wagahai-text-list n
+
+  let wagahai-text n =
+    let s = wagahai-string n in
+    embed-string s
+
+  let-inline \wagahai n = wagahai-text n
+
+  let-block ctx +wagahai ?:n-opt m =
+    let n =
+      match n-opt with
+      | None -> m
+      | Some(n) -> n
+    in
+    let str-lst = LipsumJaText.get-text-list LipsumJaText.wagahai-text-list n m in
+    str-lst
+    |> List.map
+      (fun s ->
+        s
+        |> embed-string
+        |> read-inline ctx
+        |> line-break true true ctx
+      )
+    |> List.fold-left (+++) block-nil
+
+
+  let preamble-string n =
+    LipsumJaText.get-text LipsumJaText.preamble-text-list n
+
+  let preamble-text n =
+    let s = preamble-string n in
+    embed-string s
+
+  let-inline \preamble n = preamble-text n
+
+  let-block ctx +preamble ?:n-opt m =
+    let n =
+      match n-opt with
+      | None -> m
+      | Some(n) -> n
+    in
+    let str-lst = LipsumJaText.get-text-list LipsumJaText.preamble-text-list n m in
+    str-lst
+    |> List.map
+      (fun s ->
+        s
+        |> embed-string
+        |> read-inline ctx
+        |> line-break true true ctx
+      )
+    |> List.fold-left (+++) block-nil
+
+
+end

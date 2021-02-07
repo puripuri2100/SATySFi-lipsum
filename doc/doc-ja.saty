@@ -1,0 +1,99 @@
+@require: stdjabook
+@require: code
+@require: itemize
+@require: lipsum/lipsum
+
+document (|
+  title = {lipsum};
+  author = {Naoki Kaneko (a.k.a. "puripuri2100")};
+  show-title = true;
+  show-toc = false;
+|) '<
+  +p{ダミーテキストを提供するパッケージです。}
+  +p{読み込みは\code(`@require: lipsum/lipsum`);です。}
+  +p{モジュール名は\code(`Lipsum`);です。}
+
+  +section {提供コマンド・関数} <
+    +p{一部のダミーテキストは段落を指定することができます。}
+    +subsection {quick brown fox} <
+      +listing {
+        * \code(`val quick-brown-fox-string : string`);
+        * \code(`val quick-brown-fox-text : inline-text`);
+        * \code(`direct \quick-brown-fox : [] inline-cmd`);
+        * \code(`direct +quick-brown-fox : [] block-cmd`);
+      }
+    >
+    +subsection {Lorem ipsum} <
+      +listing {
+        * \code(`val lipsum-string : int -> string`);
+        * \code(`val lipsum-text : int -> inline-text`);
+        * \code(`direct \lipsum : [int] inline-cmd`);
+        * \code(`direct +lipsum : [int?; int] block-cmd`);
+      }
+    >
+    +subsection {いろはにほへと} <
+      +listing {
+        * \code(`val iroha-string : string`);
+        * \code(`val iroha-text : inline-text`);
+        * \code(`direct \iroha : [] inline-cmd`);
+        * \code(`direct +iroha : [] block-cmd`);
+      }
+    >
+    +subsection {寿限無寿限無……} <
+      +listing {
+        * \code(`val jugemu-string : string`);
+        * \code(`val jugemu-text : inline-text`);
+        * \code(`direct \jugemu : [] inline-cmd`);
+        * \code(`direct +jugemu : [] block-cmd`);
+      }
+    >
+    +subsection {寿限無・寿限無、……} <
+      +listing {
+        * \code(`val jugemuP-string : string`);
+        * \code(`val jugemuP-text : inline-text`);
+        * \code(`direct \jugemuP : [] inline-cmd`);
+        * \code(`direct +jugemuP : [] block-cmd`);
+      }
+    >
+    +subsection {吾輩は猫である} <
+      +listing {
+        * \code(`val wagahai-string : int -> string`);
+        * \code(`val wagahai-text : int -> inline-text`);
+        * \code(`direct \wagahai : [int] inline-cmd`);
+        * \code(`direct +wagahai : [int?; int] block-cmd`);
+      }
+    >
+    +subsection {日本国憲法前文} <
+      +listing {
+        * \code(`val preamble-string : int -> string`);
+        * \code(`val preamble-text : int -> inline-text`);
+        * \code(`direct \preamble : [int] inline-cmd`);
+        * \code(`direct +preamble : [int?; int] block-cmd`);
+      }
+    >
+  >
+  +section {demo} <
+    +p{複数段落あるものは最初の段落を載せています。}
+    +subsection {quick brown fox} <
+      +p{\quick-brown-fox;}
+    >
+    +subsection {Lorem ipsum} <
+      +p{\lipsum(1);}
+    >
+    +subsection {いろはにほへと} <
+      +p{\iroha;}
+    >
+    +subsection {寿限無寿限無……} <
+      +p{\jugemu;}
+    >
+    +subsection {寿限無・寿限無、……} <
+      +p{\jugemuP;}
+    >
+    +subsection {吾輩は猫である} <
+      +p{\wagahai(1);}
+    >
+    +subsection {日本国憲法前文} <
+      +p{\preamble(1);}
+    >
+  >
+>

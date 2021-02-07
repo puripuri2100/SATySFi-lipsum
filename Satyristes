@@ -3,7 +3,7 @@
 
 (library
   (name "lipsum")
-  (version "0.1.0")
+  (version "0.2.1")
   (sources
     (
      (package "lipsum.satyh" "./lipsum.satyh")
@@ -13,5 +13,29 @@
     )
   )
   (opam "satysfi-lipsum.opam")
-  (dependencies ())
-  (compatibility ((satyrographos "0.0.1"))))
+  (dependencies ()))
+
+;; Library doc declaration
+(libraryDoc
+  ;; Library doc name
+  (name "lipsum-doc")
+  ;; Library version
+  (version "0.2.1")
+  ;; Working directory to build docs
+  (workingDirectory "doc")
+  ;; Build commands
+  (build
+    ;; Run SATySFi
+    ((satysfi "doc-ja.saty" "-o" "doc-ja.pdf")))
+  ;; Files
+  (sources
+    ((doc "doc-ja.pdf" "doc/doc-ja.pdf")))
+  ;; OPAM package file
+  (opam "satysfi-lipsum-doc.opam")
+  ;; Dependency
+  (dependencies
+    ((lipsum ()) ; the main library
+     (dist ())
+     (lipsum ())
+    )))
+
